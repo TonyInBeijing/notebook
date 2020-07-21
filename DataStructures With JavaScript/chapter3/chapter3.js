@@ -24,21 +24,6 @@ class List {
         this.listSize = 0;
         this.dataStore = [];
         this.pos = 0;
-        this.length = this.length.bind(this);
-        this.clear = this.clear.bind(this);
-        this.toString = this.toString.bind(this);
-        this.getElement = this.getElement.bind(this);
-        this.insert = this.insert.bind(this);
-        this.append = this.append.bind(this);
-        this.remove = this.remove.bind(this);
-        this.front = this.front.bind(this);
-        this.end = this.end.bind(this);
-        this.prev = this.prev.bind(this);
-        this.next = this.next.bind(this);
-        this.hasNext = this.hasNext.bind(this);
-        this.hasPrev = this.hasPrev.bind(this);
-        this.currPos = this.currPos.bind(this);
-        this.moveTo = this.moveTo.bind(this);
     }
     length() {
         return this.listSize;
