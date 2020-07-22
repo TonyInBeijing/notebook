@@ -1,5 +1,5 @@
 /**
- * @description List列表
+ * @description List列表类
  * @param {Array} dataStore 保存列表元素
  * @param {Number} listSize 列表中元素个数
  * @param {Number} pos 列表的当前位置
