@@ -3,7 +3,7 @@ var PENDING = 'pending';
 var FULFILLED = 'fulfilled';
 var REJECTED = 'rejected';
 
-// 2. 构造函数
+// 2. promise构造函数
 function Promise(execute) {
     var that = this;
     that.state = PENDING;
