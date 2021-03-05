@@ -1,3 +1,7 @@
+/**
+ * @description 手写一个promise
+ * @param {function} callback 
+ */
 function Promise(callback) {
     this._status = 'pending';
     callback(
