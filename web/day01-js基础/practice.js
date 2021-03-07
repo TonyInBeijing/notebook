@@ -96,3 +96,73 @@ var person = {
     }
 };
 person.execution(); // xiaowa
+
+// 1.函数直接调用时
+function myfunc() {
+    console.log(this);
+}
+myfunc(); // Window
+
+// 2.函数被别人调用时
+function myfunc() {
+    console.log(this);
+}
+var a = {
+    func: myfunc
+};
+a.func(); // a
+
+// 3.new一个实例
+function Person(name) {
+    this.name = name;
+    console.log(this.name);
+}
+var person = new Person('xxx');
+console.log(person.name); // xxx this指向person，new出来的实例
+
+// 4.call,apply,bind
+function func() {
+    console.log(this.name);
+}
+
+var person1 = {
+    name: 'xxx',
+    func: func
+};
+
+var person2 = {
+    name: 'yyy',
+    func: func
+}
+
+// this指向person2
+person1.func.call(person2); // yyy 
+person1.func.apply(person2); // yyy 
+(person1.func.bind(person2))(); // yyy 
+
+/**
+ * call,apply,bind有什么区别
+ * call 立即执行 object.call(obj,arg1,arg2,arg3)
+ * apply 立即执行 object.apply(obj,[arg1,arg2,arg3])
+ * bind 返回值为一个函数，不会改变原函数的this指向
+ */
+
+// 5.箭头函数
+function func() {
+    console.log(this.name);
+    return () => {
+        // 箭头函数里的this指向函数词法作用域外面的this
+        console.log(this.name);
+    }
+}
+
+var person1 = {
+    name: 'xxx',
+    func: func
+};
+var person2 = {
+    name: 'yyy',
+    func: person1.func()
+};
+person1.func(); // xxx 在定义中往上找this
+person2.func(); // xxx 同上
