@@ -62,3 +62,37 @@ function execution() {
     inner();
 }
 execution();// 'yuanxin'
+
+/**
+ * 闭包: 一个函数访问另一个函数中的变量
+ */
+function outer() {
+    var person = 'xiaowa';
+    function inner() {
+        console.log(person);
+    }
+    return inner;
+}
+var inner = outer();
+// eg.
+function Person() {
+    var _attackValume = 100;
+    return {
+        attack: function (body) {
+            body.blood = this._attackValume - body.defense
+        }
+    };
+};
+var person = new Person();
+console.log(person._attackValume); // undefined
+
+/**
+ * this
+ */
+var person = {
+    name: 'xiaowa',
+    execution() {
+        console.log(this.name);
+    }
+};
+person.execution(); // xiaowa
