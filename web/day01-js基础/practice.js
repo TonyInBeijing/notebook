@@ -166,3 +166,30 @@ var person2 = {
 };
 person1.func(); // xxx 在定义中往上找this
 person2.func(); // xxx 同上
+
+// 练习题
+function show() {
+    console.log(this);
+}
+
+var obj = {
+    show: function () {
+        console.log(this);
+    }
+}
+    (0, obj.show)(); // window 
+// 逗号表达式返回最后一项 obj.show 等于 function(){console.log(this)},执行此方法返回 Window
+
+var obj = {
+    sub: {
+        show: function () {
+            console.log(this);
+        }
+    }
+};
+obj.sub.show(); // sub
+
+var elem = document.getElementById("id");
+elem.addEventListener('click', obj.show); // window
+elem.addEventListener('click', obj.show.bind(obj)); // obj
+elem.addEventListener('click', function () { obj.show() }); // obj
