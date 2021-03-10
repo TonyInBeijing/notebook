@@ -62,7 +62,13 @@ var person = newObj;
 
 // 4.组合模式
 // 把单独的属性放到构造函数中，把共有的属性（比如方法）放到prototype上
-
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+Person.prototype.say = function () {
+    console.log('hello');
+}
 // 手写一个new函数（正式版）
 function newOperation(constructorFunc) {
     var newObj = {};
@@ -74,4 +80,14 @@ function newOperation(constructorFunc) {
     const newObj = Object.create(constructorFunc.prototype);
     constructorFunc.call(newObj);
     return newObj;
+}
+// 5.es6模式class
+class Person{
+    constructor(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    say(){
+        console.log('hello');
+    }
 }
