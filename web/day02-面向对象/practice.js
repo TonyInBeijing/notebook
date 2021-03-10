@@ -46,5 +46,5 @@ var person3 = newPerson;
  * Body.prototype = {constructor:Body};
  * 5.实例化一个对象，浏览器中支持访问对象的__proto__指向构造函数的prototy
  * var newBody = new Body();
- * newBody.__proto__ -> Body.prototype
+ * newBody.__proto__ === Body.prototype
  */
