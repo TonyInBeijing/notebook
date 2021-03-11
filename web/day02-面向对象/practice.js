@@ -82,12 +82,15 @@ function newOperation(constructorFunc) {
     return newObj;
 }
 // 5.es6模式class
-class Person{
-    constructor(name,age){
+class Person {
+    constructor(name, age) {
         this.name = name;
         this.age = age;
     }
-    say(){
+    say() {
         console.log('hello');
     }
 }
+
+
+// -----------------------------------------继承
