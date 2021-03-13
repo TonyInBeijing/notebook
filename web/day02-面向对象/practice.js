@@ -32,7 +32,6 @@ newPersonbinded();
 var person3 = newPerson;
 
 // 3.原型模式
-
 // 什么是原型
 /**
  * 1.声明一个函数
