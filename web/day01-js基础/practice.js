@@ -171,15 +171,13 @@ person2.func(); // xxx 同上
 function show() {
     console.log(this);
 }
-
 var obj = {
     show: function () {
         console.log(this);
     }
 }
-    (0, obj.show)(); // window 
+(0, obj.show)(); // window 
 // 逗号表达式返回最后一项 obj.show 等于 function(){console.log(this)},执行此方法返回 Window
-
 var obj = {
     sub: {
         show: function () {
@@ -188,7 +186,6 @@ var obj = {
     }
 };
 obj.sub.show(); // sub
-
 var elem = document.getElementById("id");
 elem.addEventListener('click', obj.show); // window
 elem.addEventListener('click', obj.show.bind(obj)); // obj
