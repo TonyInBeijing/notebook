@@ -196,3 +196,26 @@ child1.say(); // Parent
 
 // 为什么不直接 Child.prototype = Parent.prototype ? 
 // 修改Child.prototype,Parent.prototype也会被修改
+
+// 5. es6继承
+class Parent{
+    constructor(){
+        this.age = 40;
+        this.name = "parent";
+    }
+    say(){
+        console.log("parent");
+    }
+}
+class Child extends Parent{
+    constructor(){
+        super();
+        this.name = "child"
+    }
+    say(){
+        console.log("child");
+    }
+}
+var child1 = new Child();
+console.log(child1.age,child1.name); // 40 child
+child1.say(); // child 
