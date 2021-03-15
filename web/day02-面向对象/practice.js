@@ -92,3 +92,39 @@ class Person {
 
 
 // -----------------------------------------继承
+// 1.原型链方法
+function Parent() {
+    this.info = {
+        age: 40,
+        name: 'parent'
+    };
+}
+Parent.prototype.say = function () {
+    console.log('parent');
+}
+function Child() { }
+Child.prototype = new Parent();
+var child1 = new Child();
+var child2 = new Child();
+console.log(child1.info.age); // 40
+child1.say(); // parent
+// 缺陷：一改全改 child1.info.age = 20; child2.info.age = 20;
+
+// 特殊情况
+function Parent() {
+    this.age = 40;
+    this.name = "parent";
+}
+function Child() { }
+Child.prototype = new Parent();
+var child1 = new Child();
+var child2 = new Child();
+child1.age = 20;
+child1.name = "child";
+console.log(child1.age,child1.name); // 20,child
+console.log(child2.age,child2.name); // 40,parent
+
+// 因为child1.age = 20 给child1对象上挂载了age属性，name同理，并不会修改__proto__上的值
+// 而child1.info.age 浏览器先寻找info属性，如果没有，则会去__proto__上寻找，所以修改了__proto__
+
+// 2.借用构造函数继承
