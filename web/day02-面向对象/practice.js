@@ -121,10 +121,78 @@ var child1 = new Child();
 var child2 = new Child();
 child1.age = 20;
 child1.name = "child";
-console.log(child1.age,child1.name); // 20,child
-console.log(child2.age,child2.name); // 40,parent
+console.log(child1.age, child1.name); // 20,child
+console.log(child2.age, child2.name); // 40,parent
 
 // 因为child1.age = 20 给child1对象上挂载了age属性，name同理，并不会修改__proto__上的值
 // 而child1.info.age 浏览器先寻找info属性，如果没有，则会去__proto__上寻找，所以修改了__proto__
 
 // 2.借用构造函数继承
+function Parent() {
+    this.age = 40;
+    this.name = "parent";
+};
+Parent.prototype.say = function () {
+    console.log("Parent");
+};
+function Child() {
+    Parent.call(this);
+}
+var child1 = new Child();
+var child2 = new Child();
+
+child1.name = "Child";
+child1.age = 20;
+console.log(child1.name, child1.age); // Child 20
+console.log(child2.name, child2.age); // Parent 40
+// 缺点：无法继承父类 prototype 上的属性
+// 3.原型链和构造函数方式继承
+function Parent() {
+    this.age = 40;
+    this.name = "parent";
+};
+Parent.prototype.say = function () {
+    console.log("Parent");
+};
+function Child() {
+    Parent.call(this);
+}
+Child.prototype = new Parent();
+var child1 = new Child();
+var child2 = new Child();
+
+child1.name = "Child";
+child1.age = 20;
+console.log(child1.name, child1.age); // Child 20
+console.log(child2.name, child2.age); // Parent 40
+
+// 缺陷：当父类需要传参时
+// function Parent(name){
+//     this.name = name;
+//     this.age = 40;
+// }
+// Child.prototype = new Parent(); 无法传参
+
+// 4.寄生组合式继承
+function Parent() {
+    this.age = 40;
+    this.name = "parent";
+};
+Parent.prototype.say = function () {
+    console.log("Parent");
+};
+function Child() {
+    Parent.call(this);
+}
+Child.prototype = Object.create(Parent.prototype);
+var child1 = new Child();
+var child2 = new Child();
+
+child1.name = "Child";
+child1.age = 20;
+console.log(child1.name, child1.age); // Child 20
+console.log(child2.name, child2.age); // Parent 40
+child1.say(); // Parent
+
+// 为什么不直接 Child.prototype = Parent.prototype ? 
+// 修改Child.prototype,Parent.prototype也会被修改
