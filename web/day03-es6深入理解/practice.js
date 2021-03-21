@@ -1,7 +1,6 @@
 /**
  * @description es6 & esNext
  */
-
 var funcs = [];
 for (var i = 0; i < 10; i++) {
     funcs.push(function () {
