@@ -17,3 +17,10 @@ for (var i = 0; i < 10; i++) {
 funcs.forEach(function (func) {
     func(); //输出0-9 闭包缓存
 });
+
+// 扩展运算符
+function add(a, b, c) {
+    return a + b + c;
+}
+var param = [1,2,3];
+add(...param); // 6
