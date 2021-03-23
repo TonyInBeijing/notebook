@@ -19,8 +19,15 @@ funcs.forEach(function (func) {
 });
 
 // 扩展运算符
+// 入参
 function add(a, b, c) {
     return a + b + c;
 }
 var param = [1,2,3];
 add(...param); // 6
+
+// 形参
+function compute(numbers){
+    add.apply(null,numbers);
+}
+compute([1,2,3]); // 6
