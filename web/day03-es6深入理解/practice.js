@@ -23,11 +23,17 @@ funcs.forEach(function (func) {
 function add(a, b, c) {
     return a + b + c;
 }
-var param = [1,2,3];
+var param = [1, 2, 3];
 add(...param); // 6
 
 // 形参
-function compute(numbers){
-    add.apply(null,numbers);
+function compute(numbers) {
+    add.apply(null, numbers);
 }
-compute([1,2,3]); // 6
+compute([1, 2, 3]); // 6
+
+
+function add(...numbers) {
+    console.log(numbers);
+}
+add(1, 2, 3); //[1,2,3]
