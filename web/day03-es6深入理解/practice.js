@@ -56,6 +56,10 @@ function requestParamsProcess(params) {
     // Object.assign();
     let processedParams = {};
     Object.assign(processedParams, params);
+
+    // 使用扩展运算符实现
+    processedParams = {...params}
+
     return processedParams;
 }
 
