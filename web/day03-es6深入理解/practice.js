@@ -44,3 +44,23 @@ const demo = {
     [key]: 'key'
 };
 console.log(demo[key]);
+
+// object.assign();
+var params = {
+    url: 'http://www.taobao.com',
+    method: 'get'
+}
+
+function requestParamsProcess(params) {
+    params.method = params.method.toUpperCase(); // 修改了引用产生不可预知的错误
+    // Object.assign();
+    let processedParams = {};
+    Object.assign(processedParams, params);
+    return processedParams;
+}
+
+function request() {
+    const processedParams = requestParamsProcess(params);
+    // 发送请求
+}
+
