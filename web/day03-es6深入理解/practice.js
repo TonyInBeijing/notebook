@@ -37,3 +37,10 @@ function add(...numbers) {
     console.log(numbers);
 }
 add(1, 2, 3); //[1,2,3]
+
+// 扩展对象的方法
+const key = 'myKey';
+const demo = {
+    [key]: 'key'
+};
+console.log(demo[key]);
