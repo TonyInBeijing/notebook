@@ -50,7 +50,6 @@ var params = {
     url: 'http://www.taobao.com',
     method: 'get'
 }
-
 function requestParamsProcess(params) {
     params.method = params.method.toUpperCase(); // 修改了引用产生不可预知的错误
     // Object.assign();
