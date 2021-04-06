@@ -59,7 +59,6 @@ function requestParamsProcess(params) {
     processedParams = {...params}
     return processedParams;
 }
-
 function request() {
     const processedParams = requestParamsProcess(params);
     // 发送请求
