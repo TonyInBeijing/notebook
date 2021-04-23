@@ -1,7 +1,6 @@
 /**
  * @description 发布订阅&观察者模式 实现
  */
-
 // 简单实现发布订阅
 const e = {
     callbackList: [],
