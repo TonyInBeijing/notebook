@@ -78,6 +78,5 @@ class Main6{
         final double PI = 3.14;
         double r = 5.6;
         double area = PI * r * r;
-        
     }
 }
