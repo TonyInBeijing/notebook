@@ -1,4 +1,4 @@
-public class Hello{ // 类名是Hello 
+class Hello{ // 类名是Hello 
     public static void Main(String[] args){ // 方法名是main
         System.out.println("Hello World");
     }
