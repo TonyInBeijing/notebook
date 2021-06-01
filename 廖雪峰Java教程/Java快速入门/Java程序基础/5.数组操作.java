@@ -67,3 +67,14 @@ class SortArr {
         System.out.println(Arrays.toString(ns));
     }
 }
+
+/**
+ * 多维数组
+ */
+class MultiArr {
+    public static void main(String[] args) {
+        int[][] arr2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+        int[][][] arr3 = { { { 1 }, { 2 }, { 3 } }, { { 4 }, { 5 }, { 6 } } };
+        System.out.println(Arrays.deepToString(arr3));
+    }
+}
