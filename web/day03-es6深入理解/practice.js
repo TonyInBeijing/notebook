@@ -56,7 +56,7 @@ function requestParamsProcess(params) {
     let processedParams = {};
     Object.assign(processedParams, params);
     // 使用扩展运算符实现
-    processedParams = {...params}
+    processedParams = { ...params }
     return processedParams;
 }
 function request() {
@@ -64,4 +64,15 @@ function request() {
     // 发送请求
     // axios.post()
 }
+
+
+// Object.assign()
+// 不改引用
+var params = {
+    count: 0
+};
+
+var mergedParams = Object.assign({}, params);
+mergedParams.count++;
+console.log(params.count, mergedParams.count); // 0,1
 
