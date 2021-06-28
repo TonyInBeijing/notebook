@@ -81,3 +81,33 @@ console.log(params.count, mergedParams.count); // 0,1
  */
 let set = new Set([1, 1, 2, 3, 3, 3, 4]);
 console.log(setArray); // Set {1,2,3,4}
+
+// class
+// es6
+class PersonClass {
+    constructor(name) {
+        this.name = name;
+    }
+    sayName() {
+        console.log(this.name);
+    }
+    static staticFunc(){
+        console.log("111");
+    }
+}
+// es5
+function PersonClass() {
+    
+}
+function constructor(name){
+    this.name = name;
+}
+PersonClass.prototype = {
+    constructor,
+    sayName() {
+        console.log(this.name);
+    }
+}
+PersonClass.staticFunc = function(){
+    console.log("222");
+}
