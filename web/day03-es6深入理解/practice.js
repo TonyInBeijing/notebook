@@ -76,3 +76,8 @@ var mergedParams = Object.assign({}, params);
 mergedParams.count++;
 console.log(params.count, mergedParams.count); // 0,1
 
+/**
+ * Set
+ */
+let set = new Set([1, 1, 2, 3, 3, 3, 4]);
+console.log(setArray); // Set {1,2,3,4}
