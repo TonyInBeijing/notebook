@@ -1,12 +1,12 @@
 /**
  * proxy 代理
  */
- let target = {
+let target = {
     isTarget: 1
 };
-let proxy = new Proxy(target, {
+let handler = {
     get() {
-        return "111"
+        return 111;
     },
     set(target, key, value, receiver) {
         // target --传入的对象
@@ -16,7 +16,8 @@ let proxy = new Proxy(target, {
         console.log(arguments);
         target[key] = value;
     }
-});
+};
+let proxy = new Proxy(target, handler);
 proxy.msg = "zhaowa";
 console.log(proxy.msg);
 console.log(target.msg);

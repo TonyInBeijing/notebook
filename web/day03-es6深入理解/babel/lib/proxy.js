@@ -54,19 +54,20 @@ function globalSetInterceptor(object, propertyName, value) {
 var target = {
   isTarget: 1
 };
-var proxy = new Proxy(target, {
+var handler = {
   get: function get() {
-    return "111";
+    return 111;
   },
   set: function set(target, key, value, receiver) {
     // target --传入的对象
     // key --修改对象的键名
     // value --修改对象的键值
     // receiver --接收修改值的对象
-    console.log(arguments);
-    target[key] = value;
+    globalGetInterceptor(console, "log")(arguments);
+    globalSetInterceptor(target, "key", value);
   }
-});
+};
+var proxy = new Proxy(target, handler);
 globalSetInterceptor(proxy, "msg", "zhaowa");
 globalGetInterceptor(console, "log")(globalGetInterceptor(proxy, "msg"));
 globalGetInterceptor(console, "log")(globalGetInterceptor(target, "msg"));
