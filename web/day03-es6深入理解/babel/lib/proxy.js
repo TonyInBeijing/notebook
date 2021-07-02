@@ -47,7 +47,6 @@ function globalSetInterceptor(object, propertyName, value) {
 
   defaultHandler.set(propertyName, value);
 }
-
 /**
  * proxy 代理
  */
