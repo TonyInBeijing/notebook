@@ -5,6 +5,7 @@
     <!-- KForm -->
     <KForm :model="model" :rules="rules" ref="loginForm">
       <KFormItem label="用户名" prop="username">
+        <!-- v-model实现input,textarea,checkbox,radio等表单元素双向绑定 -->
         <KInput v-model="model.username" placeholder="请输入用户名"></KInput>
       </KFormItem>
       <KFormItem label="密码" prop="password">
