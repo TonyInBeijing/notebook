@@ -2,17 +2,29 @@
  * @description 实现一个vue-router
  */
 
-// let KVue;
+let KVue;
 
 
 class KVueRouter {
-
-
+    constructor(options) {
+        this.$options = options;
+        // 设置路由初始值
+        const initial = window.location.hash.slice(1) || "/";
+        // 响应式数据
+        KVue.util.defineReactive(this,"current",initial);
+        // 监听事件
+        window.addEventListener("hashchange", this.onHashChange.bind(this));
+    }
+    // 将#后面的赋值给current
+    onHashChange() {
+        this.current = window.location.hash.slice(1);
+        console.log(this.current);
+    }
 }
 // 行参是Vue的构造函数
 KVueRouter.install = function (Vue) {
     // 保存构造函数
-    // KVue = Vue;
+    KVue = Vue;
     // 1.挂载一下$router
     Vue.mixin({
         beforeCreate() {
@@ -44,7 +56,13 @@ KVueRouter.install = function (Vue) {
     // router-view是一个容器
     Vue.component("router-view", {
         render(h) {
-            return h("div", "view");
+            // 获取路由表
+            // 1.获取路由实例
+            const routes = this.$router.$options.routes;
+            const current = this.$router.current;
+            const route = routes.find(route => route.path === current);
+            const comp = route ? route.component : null;
+            return h(comp);
         }
     });
 }
