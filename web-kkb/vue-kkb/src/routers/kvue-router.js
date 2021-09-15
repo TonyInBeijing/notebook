@@ -11,7 +11,7 @@ class KVueRouter {
         // 设置路由初始值
         const initial = window.location.hash.slice(1) || "/";
         // 响应式数据
-        KVue.util.defineReactive(this,"current",initial);
+        KVue.util.defineReactive(this, "current", initial);
         // 监听事件
         window.addEventListener("hashchange", this.onHashChange.bind(this));
     }
