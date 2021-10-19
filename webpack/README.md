@@ -87,3 +87,20 @@ module.exports = {
     output: [name].js // 使用占位符来区分
 }
 ```
+
+## Loaders
+> webpack开箱即用只支持js和json两种文件类型，通过 Loaders 去支持其他文件类型并且把它们转化成有效的模块，并且可以添加到依赖中
+> 本身是一个函数，接受源文件作为参数，返回转换的结果
+
+```js
+module.exports = {
+    ...
+    module:{
+        rules: [
+            // test 指定匹配规则 use 指定使用的loader名称
+            {test: "/\.txt$/",use: "raw-loader"}
+        ]
+    }
+    ...
+}
+```
