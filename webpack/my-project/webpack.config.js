@@ -11,5 +11,14 @@ module.exports = {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js'
     },
-    mode: 'production'
+    mode: 'production',
+    module: {
+        "rules": [
+            // 使用 babel 解析 es6
+            {
+                test: /.js$/,
+                use: "babel-loader"
+            }
+        ]
+    }
 }
