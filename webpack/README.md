@@ -119,3 +119,7 @@ module.exports = {
     ]
 }
 ```
+
+## mode 指定当前的构建环境
+> production、development、none
+> 设置 mode 可以使用 webpack 的内置函数
