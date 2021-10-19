@@ -104,3 +104,18 @@ module.exports = {
     ...
 }
 ```
+
+## Plugins
+> Plugins-插件 用于bundle文件的优化，资源管理和环境变量的注入
+> 作用于整个构建过程
+```js
+module.exports = {
+    output: {
+        filename: "bundle.js"
+    },
+    // 放到 plugins 数组里
+    plugins:[
+        new HtmlWebpackPlugin({template:"./src/index.html"})
+    ]
+}
+```
