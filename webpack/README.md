@@ -50,3 +50,40 @@ module.exports = {
     ...
 }
 ```
+
+## Entry 入口
+
+### 单入口
+> entry 是一个字符串
+```js
+module.exports = {
+    entry: './path/to/my/entry/files'
+}
+```
+
+### 多入口
+> entry 是一个对象
+```js
+module.exports = {
+    entry: {
+        app: './src/app.js',
+        adminApp: './src/adminApp.js'
+    }
+}
+```
+
+## Output 出口
+
+### 单入口
+```js
+module.exports = {
+    output: "bundle.js"
+}
+```
+
+### 多入口
+```js
+module.exports = {
+    output: [name].js // 使用占位符来区分
+}
+```
