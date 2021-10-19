@@ -118,6 +118,12 @@ module.exports = {
         new HtmlWebpackPlugin({template:"./src/index.html"})
     ]
 }
+
+// 解析 es6 和 react 语法需要安装babel
+// 解析 es6
+npm i @babel/core @babel/preset-env babel-loader -D
+// 解析 react
+npm i react react-dom @babel/preset-react -D
 ```
 
 ## mode 指定当前的构建环境
