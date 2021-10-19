@@ -39,3 +39,14 @@ module.exports = {
     ]
 }
 ```
+
+## 通过 npm script 运行 webpack
+```js
+{
+    ...
+    "scripts":{
+        "build":"webpack" // 原理：模块局部安装会在node_modules/.bin目录创建软链接
+    }
+    ...
+}
+```
