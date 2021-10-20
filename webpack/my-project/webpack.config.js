@@ -18,6 +18,23 @@ module.exports = {
             {
                 test: /.js$/,
                 use: "babel-loader"
+            },
+            // 解析css
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            // 解析less
+            {
+                test: /\.less$/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "less-loader"
+                ]
             }
         ]
     }

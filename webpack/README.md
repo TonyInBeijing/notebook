@@ -98,7 +98,12 @@ module.exports = {
     module:{
         rules: [
             // test 指定匹配规则 use 指定使用的loader名称
-            {test: "/\.txt$/",use: "raw-loader"}
+            {test: /\.txt$/,use: "raw-loader"}
+            // 解析css
+            {test: /\.css$/,use: [
+                'style-loader',
+                'css-loader'
+            ]}
         ]
     }
     ...
