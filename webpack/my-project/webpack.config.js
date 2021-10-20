@@ -35,6 +35,11 @@ module.exports = {
                     "css-loader",
                     "less-loader"
                 ]
+            },
+            // 解析文件
+            {
+                test: /\.(png|jpg|gif|jpeg)$/,
+                use: "file-loader"
             }
         ]
     }

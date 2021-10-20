@@ -98,12 +98,34 @@ module.exports = {
     module:{
         rules: [
             // test 指定匹配规则 use 指定使用的loader名称
-            {test: /\.txt$/,use: "raw-loader"}
+            {
+                test: /\.txt$/,
+                use: "raw-loader"
+            },
             // 解析css
-            {test: /\.css$/,use: [
+            {
+                test: /\.css$/,
+                use: [
                 'style-loader',
                 'css-loader'
-            ]}
+                ]
+            },
+            // 解析less
+            {
+                test: /\.less$/,
+                use:[
+                    "style-loader",
+                    "css-loader",
+                    "less-loader"
+                ]
+            },
+            // 解析图片
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use:[
+                    "file-loader"
+                ]
+            }
         ]
     }
     ...
