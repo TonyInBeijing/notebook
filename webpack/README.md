@@ -191,8 +191,15 @@ module.exports = {
 - ChunkHash
 - ContentHash
 
-### js文件指纹设置
+### js 文件指纹设置
 > 设置 output 的 filename，使用 chunckhash
+
+### css 文件指纹设置
+> 使用 mini-css-extract-plugin 插件，使用 contenthash
+
+### 图片等文件压缩
+> 设置 file-loader 使用 hash
+
 ```js
 module.exports={
     entry:{
@@ -203,11 +210,6 @@ module.exports={
         filename: '[name][chunkhash:8].js',
         path: __dirname + '/dist'
     },
-    plugins:[
-        new MiniCssExtractPlugin({
-            filename: `[name][contenthash:8].css`
-        })
-    ],
     module:{
         rules:[
             {
@@ -220,6 +222,19 @@ module.exports={
                 }]
             }
         ]
-    }
+    },
+    plugins:[
+        new MiniCssExtractPlugin({
+            filename: `[name][contenthash:8].css`
+        })
+    ],
 } 
 ```
+
+## 文件压缩
+
+### js文件压缩
+> 内置了 uglifyjs-webpack-plugin
+
+### css文件压缩
+> 使用 optimize-css-assets-webpack-plugin
