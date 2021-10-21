@@ -9,7 +9,7 @@ class Search extends React.Component {
     render() {
         return (
             <div className="search-text">
-                Search Page
+                Search Page 123
                 <img src={img} />
             </div>
         )

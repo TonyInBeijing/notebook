@@ -156,3 +156,23 @@ npm i react react-dom @babel/preset-react -D
 ## mode 指定当前的构建环境
 > production、development、none
 > 设置 mode 可以使用 webpack 的内置函数
+
+## 文件监听
+- 启动 webpack 时，带上 --watch
+- 在 webpack.config.js 中加上 watch: true
+
+```js
+module.export = {
+    // 默认false
+    watch: true,
+    // 只有开启监听模式时，watchOptions 才有意义
+    watchOptions: {
+        // 默认为空,不监听的文件或者文件夹，支持正则匹配
+        ignored: /node_modules/,
+        // 监听到的变化发生后会等300ms再去执行，默认300ms
+        aggregateTimeout: 300,
+        // 判断文件是否发生变化是通过不停询问系统指定文件有没有变化实现的，默认每秒1000次
+        poll: 1000
+    }
+}
+```
