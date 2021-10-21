@@ -162,7 +162,7 @@ npm i react react-dom @babel/preset-react -D
 - 在 webpack.config.js 中加上 watch: true
 
 ```js
-module.export = {
+module.exports = {
     // 默认false
     watch: true,
     // 只有开启监听模式时，watchOptions 才有意义
@@ -190,3 +190,36 @@ module.export = {
 - Hash
 - ChunkHash
 - ContentHash
+
+### js文件指纹设置
+> 设置 output 的 filename，使用 chunckhash
+```js
+module.exports={
+    entry:{
+        app: './src/app.js',
+        search: './src/search.js'
+    },
+    output: {
+        filename: '[name][chunkhash:8].js',
+        path: __dirname + '/dist'
+    },
+    plugins:[
+        new MiniCssExtractPlugin({
+            filename: `[name][contenthash:8].css`
+        })
+    ],
+    module:{
+        rules:[
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use:[{
+                    loader:'file-loader',
+                    options:{
+                        name: 'img/[name][hash:8].[ext]'
+                    }
+                }]
+            }
+        ]
+    }
+} 
+```
