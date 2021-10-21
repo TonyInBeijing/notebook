@@ -176,3 +176,17 @@ module.export = {
     }
 }
 ```
+
+## 热更新 webpack-dev-server
+- Webpack Compile:将 js 编译成 Bundle
+- HMR Server: 将热更新的文件输出给 HMR Runtime
+- Bundle Server: 提供文件在浏览器的访问
+- HMR Runtime: 会被注入到浏览器，更新文件的变化
+- bundle.js: 构建输出的文件
+
+## 文件指纹
+> 打包后输出的文件名的后缀
+
+- Hash
+- ChunkHash
+- ContentHash

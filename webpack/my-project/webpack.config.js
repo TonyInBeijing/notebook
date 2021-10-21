@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
     entry: {
@@ -11,7 +12,7 @@ module.exports = {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js'
     },
-    mode: 'production',
+    mode: 'development',
     module: {
         "rules": [
             // 使用 babel 解析 es6
@@ -42,5 +43,14 @@ module.exports = {
                 use: "file-loader"
             }
         ]
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        static: {
+            directory: path.join(__dirname, "dist/")
+        },
+        hot: true
     }
 }
