@@ -237,4 +237,6 @@ module.exports={
 > 内置了 uglifyjs-webpack-plugin
 
 ### css文件压缩
-> 使用 optimize-css-assets-webpack-plugin
+> 使用 optimize-css-assets-webpack-plugin，同时使用cssnano
+
+
