@@ -98,7 +98,34 @@ module.exports = {
     module:{
         rules: [
             // test 指定匹配规则 use 指定使用的loader名称
-            {test: "/\.txt$/",use: "raw-loader"}
+            {
+                test: /\.txt$/,
+                use: "raw-loader"
+            },
+            // 解析css
+            {
+                test: /\.css$/,
+                use: [
+                'style-loader',
+                'css-loader'
+                ]
+            },
+            // 解析less
+            {
+                test: /\.less$/,
+                use:[
+                    "style-loader",
+                    "css-loader",
+                    "less-loader"
+                ]
+            },
+            // 解析图片
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use:[
+                    "file-loader"
+                ]
+            }
         ]
     }
     ...
@@ -129,3 +156,87 @@ npm i react react-dom @babel/preset-react -D
 ## mode 指定当前的构建环境
 > production、development、none
 > 设置 mode 可以使用 webpack 的内置函数
+
+## 文件监听
+- 启动 webpack 时，带上 --watch
+- 在 webpack.config.js 中加上 watch: true
+
+```js
+module.exports = {
+    // 默认false
+    watch: true,
+    // 只有开启监听模式时，watchOptions 才有意义
+    watchOptions: {
+        // 默认为空,不监听的文件或者文件夹，支持正则匹配
+        ignored: /node_modules/,
+        // 监听到的变化发生后会等300ms再去执行，默认300ms
+        aggregateTimeout: 300,
+        // 判断文件是否发生变化是通过不停询问系统指定文件有没有变化实现的，默认每秒1000次
+        poll: 1000
+    }
+}
+```
+
+## 热更新 webpack-dev-server
+- Webpack Compile:将 js 编译成 Bundle
+- HMR Server: 将热更新的文件输出给 HMR Runtime
+- Bundle Server: 提供文件在浏览器的访问
+- HMR Runtime: 会被注入到浏览器，更新文件的变化
+- bundle.js: 构建输出的文件
+
+## 文件指纹
+> 打包后输出的文件名的后缀
+
+- Hash
+- ChunkHash
+- ContentHash
+
+### js 文件指纹设置
+> 设置 output 的 filename，使用 chunckhash
+
+### css 文件指纹设置
+> 使用 mini-css-extract-plugin 插件，使用 contenthash
+
+### 图片等文件压缩
+> 设置 file-loader 使用 hash
+
+```js
+module.exports={
+    entry:{
+        app: './src/app.js',
+        search: './src/search.js'
+    },
+    output: {
+        filename: '[name][chunkhash:8].js',
+        path: __dirname + '/dist'
+    },
+    module:{
+        rules:[
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use:[{
+                    loader:'file-loader',
+                    options:{
+                        name: 'img/[name][hash:8].[ext]'
+                    }
+                }]
+            }
+        ]
+    },
+    plugins:[
+        new MiniCssExtractPlugin({
+            filename: `[name][contenthash:8].css`
+        })
+    ],
+} 
+```
+
+## 文件压缩
+
+### js文件压缩
+> 内置了 uglifyjs-webpack-plugin
+
+### css文件压缩
+> 使用 optimize-css-assets-webpack-plugin，同时使用cssnano
+
+
