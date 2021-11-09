@@ -6,11 +6,13 @@
         <div>这是 slot</div>
     </Rate>
     <Animation />
+    <Count />
 </template>
 <script setup>
 import TodoList from '../components/Todolist.vue';
 import Rate from '../components/Rate.vue';
 import Animation from '../components/Animation.vue';
+import Count from '../components/Count.vue';
 import { ref } from "vue";
 let score = ref(3);
 </script>
