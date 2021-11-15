@@ -1,7 +1,7 @@
 import {
     createRouter,
     createWebHashHistory
-} from "./grouter";
+} from "./grouter/index";
 import Home from "../pages/home.vue";
 import About from "../pages/about.vue";
 

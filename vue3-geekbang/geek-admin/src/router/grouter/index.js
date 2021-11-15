@@ -4,8 +4,8 @@
  */
 
 import { inject, ref } from "vue";
-import { RouterLink } from "./RouterLink.vue";
-import { RouterView } from "./RouterView.vue";
+import RouterLink from "./RouterLink.vue";
+import RouterView from "./RouterView.vue";
 
 const ROUTER_KEY = "__router__";
 

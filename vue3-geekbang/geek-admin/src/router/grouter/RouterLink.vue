@@ -1,5 +1,7 @@
 <template>
-    <a :href="'#' + props.to"></a>
+    <a :href="'#' + props.to">
+        <slot />
+    </a>
 </template>
 <script setup>
 import { defineProps } from 'vue';
