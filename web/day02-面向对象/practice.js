@@ -25,11 +25,11 @@ var person2 = new Person('yyy', 2);
 // 1.新建一个空对象 
 var newPerson = {};
 // 2.将构造函数中的作用域指向这个对象
-var newPersonbinded = Body.bind(person3);
+var newPersonbinded = Body.bind(newPerson);
 // 3.执行构造函数中的代码
 newPersonbinded();
 // 4.返回新对象
-var person3 = newPerson;
+var person3 = newPersonbinded;
 
 // 3.原型模式
 // 什么是原型
