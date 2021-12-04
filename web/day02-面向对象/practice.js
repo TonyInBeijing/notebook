@@ -29,7 +29,7 @@ var newPersonbinded = Body.bind(newPerson);
 // 3.执行构造函数中的代码
 newPersonbinded();
 // 4.返回新对象
-var person3 = newPersonbinded;
+var person3 = newPerson;
 
 // 3.原型模式
 // 什么是原型
