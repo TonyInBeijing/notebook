@@ -14,7 +14,7 @@ function personFactory(name, age) {
 }
 var person1 = personFactory('xxx', 1);
 var person2 = personFactory('yyy', 2);
-// 2.构造函数模式
+// 2.构造函数模式 (缺点：可共用的属性/方法多次创建，造成浪费)
 function Person(name, age) {
     this.name = name;
     this.age = age;
@@ -31,7 +31,7 @@ newPersonbinded();
 // 4.返回新对象
 var person3 = newPerson;
 
-// 3.原型模式
+// 3.原型模式（缺点：一改全改）
 // 什么是原型
 /**
  * 1.声明一个函数
@@ -69,12 +69,6 @@ Person.prototype.say = function () {
 }
 // 手写一个new函数（正式版）
 function newOperation(constructorFunc) {
-    var newObj = {};
-    newObj.__proto__ = constructorFunc.prototype;
-    var resObj = constructorFunc.call(newObj);
-    return resObj;
-
-    // 合并
     const newObj = Object.create(constructorFunc.prototype);
     constructorFunc.call(newObj);
     return newObj;
