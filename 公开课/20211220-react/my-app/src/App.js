@@ -1,5 +1,26 @@
 import { useState, useEffect, useCallback } from "react";
 import DemoMemo from "./useCallback";
+
+// 自定义一个 hook
+
+function useFormatTitle(title) {
+  return "--" + title + "--";
+}
+// 实现一个 useAsyncFn
+function useAsyncFn(asyncFn, deps) {
+  // 设置请求返回结果
+  let [res, setRes] = useState(null);
+  let doFetch = useCallback(
+    () => {
+      return asyncFn().then(res => {
+        setRes(res);
+      }).catch(err => console.log(err));
+    },
+    [asyncFn],
+  )
+  return [res, doFetch];
+}
+
 function App() {
   // 第二个参数为修改前面值的方法，调用方法引起视图重新更新
   let [str, setStr] = useState("hello");
@@ -19,7 +40,8 @@ function App() {
     console.log("num 更新了", num);
   }, [num]);
 
-
+  // 使用自定义 hook
+  let title = useFormatTitle("haha");
   return (
     <div>
       <h1>我的第一个Hook</h1>
@@ -28,6 +50,7 @@ function App() {
       <h2>{obj.name}</h2>
       <button onClick={() => { setNum(num + 1) }}>Num + 1</button>
       <DemoMemo />
+      <h2>{title}</h2>
     </div>
   );
 };
