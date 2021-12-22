@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import DemoMemo from "./useCallback";
+import Router from "./router";
 
 // 自定义一个 hook
-
 function useFormatTitle(title) {
   return "--" + title + "--";
 }
@@ -51,6 +51,7 @@ function App() {
       <button onClick={() => { setNum(num + 1) }}>Num + 1</button>
       <DemoMemo />
       <h2>{title}</h2>
+      <Router />
     </div>
   );
 };
