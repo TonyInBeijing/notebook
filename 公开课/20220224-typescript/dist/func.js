@@ -11,3 +11,8 @@ function test() {
 function error(message) {
     throw new Error(message);
 }
+// 带参数和返回值的函数,
+function test2(name, age) {
+    return `name 的值为 ${name},age 的值是 ${age}`;
+}
+console.log(test2("小明", 22));

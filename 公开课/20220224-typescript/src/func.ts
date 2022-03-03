@@ -3,7 +3,7 @@
  */
 
 // void - 当函数没有返回数据，返回类型就是 void
-function test():void {
+function test(): void {
     console.log("test");
 };
 
@@ -12,3 +12,9 @@ function error(message: string): never {
     throw new Error(message);
 }
 
+// 带参数和返回值的函数,
+function test2(name?: string, age?: number): string {
+    return `name 的值为 ${name},age 的值是 ${age}`;
+}
+
+console.log(test2("小明",22));
