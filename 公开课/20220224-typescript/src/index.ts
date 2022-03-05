@@ -5,3 +5,5 @@ let multiTypeVal: string | number = "Number or String";
 multiTypeVal = 1;
 console.log(str);
 console.log(multiTypeVal);
+
+export default {};
