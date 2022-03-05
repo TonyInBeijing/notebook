@@ -1,5 +1,7 @@
 # Q1：如何理解 HTML 语义化?
 
+> 参考链接：[如何理解HTML结构的语义化？](https://www.jianshu.com/p/6bc1fc059b51)
+
 **HTML 语义化的核心是反对大篇幅的使用无语义化的 div + css + span，而鼓励使用 HTML 定义好的语义化标签。**
 
 - 让人更容易读懂（增加代码可读性）
@@ -24,10 +26,44 @@
 
 - 补充一点：不仅写html结构时，要用语义化标签，给元素写css类名时，也要遵循语义化原则，不要，随便起个名字就用，那样等以后，再重构时，非常难读。最忌讳的是不会英文，用汉语拼音代替。别那么LOW 。
 
-> 参考链接：[如何理解HTML结构的语义化？](https://www.jianshu.com/p/6bc1fc059b51)
+
 
 # Q2：script 标签中 defer 和 async 的区别?
 
 - script 会阻断 html 解析，当脚本下载并执行完毕后才会继续解析 html
 - script async 异步下载脚本，下载完成后立即执行，有可能会阻断 html 的解析
 - script defer 不会阻断 html 解析，解析完成后按顺序执行脚本
+
+# Q3：从输入 url 到看到页面发生了什么（经典必看）
+
+> 参考链接：
+> [史上最详细的经典面试题 从输入URL到看到页面发生了什么？](https://juejin.cn/post/6844903832435032072)
+> [从URL输入到页面展现到底发生什么？](https://juejin.cn/post/6844903784229896199)
+
+1. DNS 解析域名
+2. TCP 三次握手建立连接
+3. 客户端发送 HTTP 请求
+4. 服务端处理请求并返回 HTTP 报文
+5. 浏览器解析并渲染页面
+6. TCP 四次挥手，连接结束
+
+ ## 什么是 url ?
+
+URL（Uniform Resource Locator），统一资源定位符，用于定位互联网上资源，俗称网址
+
+scheme://host.domain:port/path/filename?abc=123#456
+
+- scheme: 协议类型，常见的有 http,https,file,ftp
+- host: 定义域主机，http默认主机是 www
+- domain: 定义域名
+- port: 定义端口号, http默认端口号80，https是443
+- path: 定义文件路径
+- filename: 定义文档/资源名称
+- query: 查询参数，上面的 abc=123
+- fragment: 锚点， #456
+
+## DNS 解析域名
+
+## TCP 三次握手和四次挥手
+
+
