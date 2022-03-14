@@ -2,14 +2,14 @@
  * @Author: TonyInBeijing
  * @Date: 2022-03-14 16:19:22
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2022-03-14 17:07:28
- * @FilePath: \notebook\demo\nestjs\src\service\cats\cats.service.ts
+ * @LastEditTime: 2022-03-14 20:08:12
+ * @FilePath: /notebook/demo/nestjs/src/cats/cats.service.ts
  * @Description: 
  * 
  */
 
 import { Injectable } from "@nestjs/common";
-import Cat from "src/interfaces/cats/cat.interface";
+import Cat from "src/cats/interfaces/cat.interface";
 @Injectable()
 export default class CatsService {
     private readonly cats: Cat[] = [];

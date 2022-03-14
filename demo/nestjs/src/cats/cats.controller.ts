@@ -2,19 +2,19 @@
  * @Author: TonyInBeijing
  * @Date: 2022-03-14 14:28:57
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2022-03-14 17:07:24
- * @FilePath: \notebook\demo\nestjs\src\controller\cats.controller.ts
+ * @LastEditTime: 2022-03-14 20:08:11
+ * @FilePath: /notebook/demo/nestjs/src/cats/cats.controller.ts
  * @Description: 
  * 
  */
 
 import { Body, Controller, Delete, Get, Param, Post, Put, Query } from "@nestjs/common";
-import CreateCatDto from "src/dto/cats/create-cat.dto";
-import UpdateCatDto from "src/dto/cats/update-cat.dto";
-import ListAllEntities from "src/dto/cats/list-all-entities.dto";
+import CreateCatDto from "src/cats/dto/create-cat.dto";
+import UpdateCatDto from "./dto/update-cat.dto";
+import ListAllEntities from "./dto/list-all-entities.dto";
 
-import CatsService from "src/service/cats/cats.service";
-import Cat from "src/interfaces/cats/cat.interface";
+import CatsService from "src/cats/cats.service";
+import Cat from "src/cats/interfaces/cat.interface";
 
 @Controller("cats")
 export default class CatsController {

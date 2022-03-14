@@ -2,20 +2,15 @@
  * @Author: TonyInBeijing
  * @Date: 2022-03-14 14:21:29
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2022-03-14 17:07:40
- * @FilePath: \notebook\demo\nestjs\src\app.module.ts
+ * @LastEditTime: 2022-03-14 20:08:14
+ * @FilePath: /notebook/demo/nestjs/src/app.module.ts
  * @Description: 
  * 
  */
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import CatsController from './controller/cats.controller';
-import CatsService from './service/cats/cats.service';
+import CatsModule from './cats/cats.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController, CatsController],
-  providers: [AppService, CatsService],
+  imports: [CatsModule],
 })
 export class AppModule { }
