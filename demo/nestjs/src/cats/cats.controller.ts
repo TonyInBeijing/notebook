@@ -2,13 +2,13 @@
  * @Author: TonyInBeijing
  * @Date: 2022-03-14 14:28:57
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2022-03-16 16:22:59
- * @FilePath: \notebook\demo\nestjs\src\cats\cats.controller.ts
+ * @LastEditTime: 2022-03-20 17:41:00
+ * @FilePath: /notebook/demo/nestjs/src/cats/cats.controller.ts
  * @Description: 
  * 
  */
 
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, Query, UseFilters } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, Query, UseFilters, UseGuards } from "@nestjs/common";
 import CreateCatDto from "src/cats/dto/create-cat.dto";
 import UpdateCatDto from "./dto/update-cat.dto";
 import ListAllEntities from "./dto/list-all-entities.dto";
@@ -17,14 +17,16 @@ import CatsService from "src/cats/cats.service";
 import Cat from "src/cats/interfaces/cat.interface";
 
 import HttpExceptionFilter from "src/common/filters/http-exception.filter";
+import RoleGuard from "src/common/guards/role.guard";
 
 @Controller("cats")
 // @UseFilters(HttpExceptionFilter) -- 控制器级别过滤器
+@UseGuards(RoleGuard)
 export default class CatsController {
     constructor(private readonly catsService: CatsService) { }
     @Get()
     async findAll(@Query() query: ListAllEntities): Promise<Cat[]> {
-        throw new HttpException("Forbidden",HttpStatus.FORBIDDEN);
+        throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
         return this.catsService.findAll();
     }
     @Post()
