@@ -18,7 +18,9 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
   }
   desc = decorators.slice().reverse().reduce(function (desc, decorator) {
     return decorator(target, property, desc) || desc;
-  }, desc);
+  },
+    desc
+  );
   if (context && desc.initializer !== void 0) {
     desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
     desc.initializer = undefined;
@@ -30,20 +32,34 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
   return desc;
 }
 
-
+/*
+ * @Author: TonyInBeijing
+ * @Date: 2022-08-31 23:10:05
+ * @LastEditors: TonyInBeijing
+ * @LastEditTime: 2022-08-31 23:11:53
+ * @FilePath: /notebook/playground/src/decorator.js
+ * @Description: 
+ * 
+ */
 const sayName = () => {
   console.log("Hello,my name is Tony");
 };
 
-let Person = (_dec = sayName(), (_class = class Person {
-  constructor(name) {
-    this.name = name;
-  }
+let Person = (
+  _dec = sayName(),
+  (
+    _class = class Person {
+      constructor(name) {
+        this.name = name;
+      }
 
-  say() {
-    console.log(this.name);
-  }
+      say() {
+        console.log(this.name);
+      }
 
-}, (_applyDecoratedDescriptor(_class.prototype, "say", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "say"), _class.prototype)), _class));
-;
+    },
+    (_applyDecoratedDescriptor(_class.prototype, "say", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "say"), _class.prototype)),
+    _class
+  )
+);
 new Person("Jack").say();
