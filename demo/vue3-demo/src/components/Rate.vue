@@ -2,7 +2,7 @@
  * @Author: TonyInBeijing
  * @Date: 2022-10-06 11:48:29
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2022-10-06 12:21:01
+ * @LastEditTime: 2022-10-06 13:10:15
  * @FilePath: \notebook\demo\vue3-demo\src\components\Rate.vue
  * @Description: 评分组件
  * 
@@ -24,8 +24,6 @@ let props = defineProps({
 });
 
 const emits = defineEmits(["onRate"]);
-
-console.log(props);
 
 let rate = computed(() => "★★★★★☆☆☆☆☆".slice(5 - props.value, 10 - props.value));
 
