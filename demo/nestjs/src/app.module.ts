@@ -2,18 +2,17 @@
  * @Author: TonyInBeijing
  * @Date: 2022-03-14 14:21:29
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2022-03-16 15:38:08
+ * @LastEditTime: 2022-10-13 16:15:20
  * @FilePath: \notebook\demo\nestjs\src\app.module.ts
  * @Description: 
  * 
  */
 import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
-import CatsModule from './cats/cats.module';
-import DogModule from './dogs/dogs.module';
 
 import Logger from './common/middlewares/logger.middleware';
+import DataModule from './data/data.module';
 @Module({
-  imports: [CatsModule, DogModule],
+  imports: [DataModule],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
