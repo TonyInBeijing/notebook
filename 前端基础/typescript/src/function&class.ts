@@ -2,8 +2,8 @@
  * @Author: TonyInBeijing
  * @Date: 2022-10-26 22:42:49
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2022-10-27 23:25:30
- * @FilePath: /notebook/playground/src/function&class.ts
+ * @LastEditTime: 2022-10-29 10:44:31
+ * @FilePath: \notebook\前端基础\typescript\src\function&class.ts
  * @Description: 
  * 
  */
@@ -130,6 +130,7 @@ class MyClass2 {
     /**
      * @description static 无法通过 this 来访问，需要通过 MyClass2.staticHandler 来调用
      * 静态成员直接被挂载在函数体上，实例成员被挂载在 prototype 上
+     * 所以静态成员只属于当前这个类或者子类，无法被实例继承，实例成员可以通过 prototype 一直传递下去
      */
     static staticHandler(): void {
         console.log("This is a static func");
@@ -152,10 +153,81 @@ class Base {
  * @description 派生类
  */
 class Derived extends Base {
-    print(): void {
-        super.print();
+    // print(): void {
+    //     super.print();
+    // }
+
+    // ! ts 4.3 新增了 override 来确保基类中一定存在派生类需要重写的方法
+    override print() {
+
     }
 };
+
+/**
+ * @description 抽象类 对类的结构和方法的抽象
+ * 描述了一个类中应该有哪些成员（属性，方法）等
+ * 抽象方法描述了在实际实现中的结构
+ */
+abstract class AbsClass {
+    abstract absProp: string;
+    abstract get absGetter(): string;
+    abstract absMethod(name: string): string;
+};
+
+class MyClass3 implements AbsClass {
+    absProp: string;
+    constructor(prop: string) {
+        this.absProp = prop;
+    };
+
+    get absGetter(): string {
+        return this.absProp;
+    };
+
+    absMethod(name: string): string {
+        return "";
+    };
+};
+
+// ! typescript 中无法实现静态的抽象成员
+
+// 也可以使用接口实现
+interface MyClassStuct {
+    absProp: string;
+    get absGetter(): string;
+    absMethod(name: string): string;
+};
+
+class MyClass4 implements MyClassStuct {
+    absProp: string;
+    constructor(prop: string) {
+        this.absProp = prop;
+    };
+
+    get absGetter(): string {
+        return this.absProp;
+    };
+
+    absMethod(name: string): string {
+        return "";
+    };
+};
+
+// 最后也可以使用 Newable Interface 实现
+
+class MyClass5 {
+
+};
+
+interface MyClass5Struct {
+    new(): MyClass5
+};
+
+declare const NewableMyClass5: MyClass5Struct;
+
+const myClass5 = new NewableMyClass5();
+
+
 
 
 export default {};
