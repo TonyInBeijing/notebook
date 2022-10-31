@@ -2,7 +2,7 @@
  * @Author: TonyInBeijing
  * @Date: 2022-10-30 22:38:28
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2022-10-30 22:54:24
+ * @LastEditTime: 2022-10-31 22:36:42
  * @FilePath: /notebook/前端基础/typescript/src/assert.ts
  * @Description: 类型断言
  * 
@@ -29,3 +29,28 @@ let str: string = "";
 
 
 // * 非空断言（！）
+declare const foo: {
+    func?: () => ({
+        prop?: number | null
+    })
+};
+
+foo.func!().prop!.toFixed();
+
+
+// * 代码提示辅助工具
+
+interface IStruct {
+    foo: string;
+    bar: {
+        barPropA: string;
+        barPropB: string;
+        barMethod: () => void;
+        baz: {
+            handler: () => Promise<void>;
+        }
+    };
+};
+
+// const obj:IStruct = {} // 报错
+const obj = <IStruct>{}; // 不报错
