@@ -1,0 +1,63 @@
+<!--
+ * @Author: TonyInBeijing
+ * @Date: 2022-11-08 23:35:11
+ * @LastEditors: TonyInBeijing
+ * @LastEditTime: 2022-11-08 23:46:34
+ * @FilePath: /notebook/playground/html/test.html
+ * @Description: 
+ * 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground-1</title>
+</head>
+
+<body>
+    <button onclick="execDebounce()">debounce!</button>
+    <button onclick="execThrottle()">throttle!</button>
+    <script>
+        function debounce(callback) {
+            let timeout = null;
+            return function () {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    callback.apply(this, arguments);
+                }, 500);
+            };
+        };
+
+
+        function throttle(callback) {
+            let execute = true;
+            return function () {
+                if (!execute) {
+                    return;
+                }
+                else {
+                    execute = false;
+                    setTimeout(() => {
+                        callback.apply(this, arguments);
+                        execute = true;
+                    }, 3000);
+                }
+            }
+        };
+        function say() {
+            console.log("123");
+        }
+        function execDebounce() {
+            debounce(say)();
+        };
+
+        function execThrottle() {
+            throttle(say)();
+        }
+    </script>
+</body>
+
+</html>
