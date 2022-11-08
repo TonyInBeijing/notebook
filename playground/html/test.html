@@ -2,7 +2,7 @@
  * @Author: TonyInBeijing
  * @Date: 2022-11-08 23:35:11
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2022-11-08 23:46:34
+ * @LastEditTime: 2022-11-09 00:13:57
  * @FilePath: /notebook/playground/html/test.html
  * @Description: 
  * 
@@ -18,8 +18,6 @@
 </head>
 
 <body>
-    <button onclick="execDebounce()">debounce!</button>
-    <button onclick="execThrottle()">throttle!</button>
     <script>
         function debounce(callback) {
             let timeout = null;
@@ -43,20 +41,14 @@
                     setTimeout(() => {
                         callback.apply(this, arguments);
                         execute = true;
-                    }, 3000);
+                    }, 500);
                 }
             }
         };
         function say() {
             console.log("123");
         }
-        function execDebounce() {
-            debounce(say)();
-        };
-
-        function execThrottle() {
-            throttle(say)();
-        }
+        document.addEventListener("click", throttle(say));
     </script>
 </body>
 
