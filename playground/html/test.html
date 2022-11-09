@@ -2,8 +2,8 @@
  * @Author: TonyInBeijing
  * @Date: 2022-11-08 23:35:11
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2022-11-09 00:13:57
- * @FilePath: /notebook/playground/html/test.html
+ * @LastEditTime: 2022-11-09 23:55:57
+ * @FilePath: \notebook\playground\html\test.html
  * @Description: 
  * 
 -->
@@ -19,6 +19,7 @@
 
 <body>
     <script>
+        // 防抖&节流
         function debounce(callback) {
             let timeout = null;
             return function () {
@@ -28,7 +29,6 @@
                 }, 500);
             };
         };
-
 
         function throttle(callback) {
             let execute = true;
@@ -45,10 +45,107 @@
                 }
             }
         };
+
         function say() {
             console.log("123");
         }
+
         document.addEventListener("click", throttle(say));
+
+        // 深度优先遍历&广度优先遍历
+
+        const NODE_TREE = {
+            name: "root",
+            children: [
+                {
+                    name: "child1",
+                    children: [
+                        {
+                            name: "child1-1",
+                            children: []
+                        },
+                        {
+                            name: "child1-2",
+                            children: []
+                        },
+                        {
+                            name: "child1-3",
+                            children: []
+                        }
+                    ]
+                },
+                {
+                    name: "child2",
+                    children: [
+                        {
+                            name: "child2-1",
+                            children: []
+                        },
+                        {
+                            name: "child2-2",
+                            children: []
+                        }
+                    ]
+                },
+                {
+                    name: "child3",
+                    children: []
+                }
+            ]
+        };
+
+        let visitedNodeList = [];
+
+        function deep(node) {
+            if (!node) {
+                return visitedNodeList;
+            }
+            else {
+                visitedNodeList.push(node.name);
+                const children = node.children;
+                if (children && children.length) {
+                    for (let i in children) {
+                        const currentChild = children[i];
+                        deep(currentChild);
+                    }
+                }
+                else {
+                    return visitedNodeList;
+                }
+                return visitedNodeList;
+            }
+        };
+
+        let wideVisitedNodeList = [];
+        function wide(node) {
+            if (!node) {
+                return wideVisitedNodeList;
+            }
+            else {
+                if (Array.isArray(node)) {
+                    for (let i in node) {
+                        const currentNode = node[i];
+                        wideVisitedNodeList.push(currentNode.name);
+                    }
+                    for (let i in node) {
+                        const currentNode = node[i];
+                        const children = currentNode.children;
+                        wide(children);
+                    }
+                }
+                else {
+                    wideVisitedNodeList.push(node.name);
+                    const children = node.children;
+                    wide(children);
+                }
+                return wideVisitedNodeList;
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("deep::",deep(NODE_TREE));
+            console.log("wide::",wide(NODE_TREE));
+        });
     </script>
 </body>
 
