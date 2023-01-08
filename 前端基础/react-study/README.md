@@ -2,7 +2,7 @@
  * @Author: TonyInBeijing
  * @Date: 2023-01-04 21:03:32
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2023-01-05 23:15:02
+ * @LastEditTime: 2023-01-08 22:47:03
  * @FilePath: /notebook/前端基础/react-study/README.md
  * @Description: 
  * 
@@ -31,6 +31,16 @@ JSX 元素节点会被 babel 编译成 React.createElement 语句，该 api 有�
         "let us learn React!"
     )
 ```
+**JSX 转换规则**
+| jsx元素类型	      | react.createElement 转换后 | type 属性   |
+| ----------- | ----------- | ----------- |
+| element元素类型      | react element类型	       |  标签字符串，例如 div        | 
+| fragment类型   | react element类型        |  symbol react.fragment类型        |
+| 文本类型   | 直接字符串	        |  无       |
+| 数组类型	   | 返回数组结构，里面元素被react.createElement转换	        |  无        |
+| 组件类型   | react element类型        |  组件类或者组件函数本身        |
+| 三元运算 / 表达式	   | 先执行三元运算，然后按照上述规则处理	        |  看三元运算返回结果        |
+| 函数执行		   | 先执行函数，然后按照上述规则处理		        |  看函数执行返回结果        |
 
 ## 2.React 相关面试题
 
