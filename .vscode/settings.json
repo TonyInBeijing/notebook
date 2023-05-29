@@ -3,5 +3,8 @@
         "廖雪峰Java教程/Java快速入门/Java程序基础",
         "廖雪峰Java教程/2.面向对象编程/1.面向对象基础"
     ],
-    "python.formatting.provider": "yapf"
+    "python.formatting.provider": "none",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    }
 }
