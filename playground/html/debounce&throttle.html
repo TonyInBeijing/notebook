@@ -1,0 +1,70 @@
+<!--
+ * @Author: TonyInBeijing
+ * @Date: 2023-08-11 22:43:56
+ * @LastEditors: TonyInBeijing
+ * @LastEditTime: 2023-08-11 23:26:50
+ * @FilePath: /notebook/playground/html/debounce&throttle.html
+ * @Description: 
+ * 
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>debounce&throttle</title>
+</head>
+
+<body>
+    <div id="container"></div>
+</body>
+<script>
+    for (let i = 0; i < 100; i++) {
+        const p = document.createElement("p");
+        const text = `测试标题${i + 1}`;
+        p.append(text);
+        const contaienr = document.getElementById("container");
+        contaienr.append(p);
+    }
+
+    function callback1() {
+        console.log("actived!");
+    }
+
+    // 防抖
+    function debounce(fn, time) {
+        console.log("debounce run!");
+        let timer;
+        console.log("timer letted!", timer);
+        return function () {
+            console.log("timer1::", timer);
+            if (timer) clearTimeout(timer);
+            console.log("timer2::", timer);
+            timer = setTimeout(fn, time);
+            console.log("timer3::", timer)
+        }
+    }
+
+    // 节流
+    function throttle(fn, time) {
+        let canRun = true;
+        return function () {
+            if (!canRun) {
+                return;
+            }
+            canRun = false;
+            setTimeout(function () {
+                fn();
+                canRun = true;
+            }, time)
+        }
+    }
+
+    // document.getElementById("container").addEventListener("click", debounce(callback1, 1000));
+    // document.addEventListener("scroll", debounce(callback1, 1000));
+    document.addEventListener("scroll", throttle(callback1, 1000));
+</script>
+
+</html>
