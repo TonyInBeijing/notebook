@@ -2,7 +2,7 @@
  * @Author: TonyInBeijing
  * @Date: 2023-08-16 21:59:02
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2023-08-16 23:38:14
+ * @LastEditTime: 2023-08-17 18:05:44
  * @FilePath: /notebook/playground/src/nestedObject.js
  * @Description: 
  * 
@@ -22,13 +22,8 @@ const obj = {
         f: [1, 2, 3]
     }
 }
-let time = 0;
 function find(obj, path) {
     // TODO
-    // time += 1;
-    // console.log("time::", time);
-    // console.log("obj::", obj);
-    // console.log("path::", path);
     if (typeof obj !== "object") {
         return obj;
     }
@@ -37,7 +32,7 @@ function find(obj, path) {
         const value = obj[i];
         if (path.includes(i)) {
             if (Array.isArray(value)) {
-                const targetIndex = parseInt(path.split(i)[1][1]);
+                const targetIndex = parseInt(path.split(i)[1][1]); //! 这个地方其实应正则匹配拿出下标
                 return value[targetIndex];
             }
             else {
@@ -45,9 +40,6 @@ function find(obj, path) {
                     return find(value, pathArr.filter(p => p !== i).toString().replaceAll(",", "."));
                 }
                 else {
-                    if (value === 1) {
-                        console.log(i);
-                    }
                     return value;
                 }
             }
