@@ -2,7 +2,7 @@
  * @Author: TonyInBeijing
  * @Date: 2023-08-25 19:04:46
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2023-08-27 17:01:22
+ * @LastEditTime: 2023-08-27 17:02:34
  * @FilePath: /notebook/爪哇教育笔记/day04-promise&模块化/promise-source.js
  * @Description: 手写一个 promise
  * 
@@ -18,7 +18,6 @@ class MiniPromise {
 
     excuteResolve(param) {
         setTimeout(() => {
-            console.log("param:::", param);
             if (this.status !== "pending") return;
             if (param instanceof MiniPromise) {
                 param.then(value => { }, error => { });
@@ -31,14 +30,16 @@ class MiniPromise {
     }
 
     excuteReject(error) {
-        if (this.status !== "pending") return;
-        if (error instanceof MiniPromise) {
-            error.then(value => { }, error => { });
-        }
-        this.status = "rejected";
-        this.result = error;
-        this.rejectedList.forEach(func => func(error));
-        this.rejectedList = [];
+        setTimeout(() => {
+            if (this.status !== "pending") return;
+            if (error instanceof MiniPromise) {
+                error.then(value => { }, error => { });
+            }
+            this.status = "rejected";
+            this.result = error;
+            this.rejectedList.forEach(func => func(error));
+            this.rejectedList = [];
+        }, 0);
     }
 
     then(onFulfilled, onRejected) {
