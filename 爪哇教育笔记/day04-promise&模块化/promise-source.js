@@ -1,55 +1,12 @@
-<!--
+/*
  * @Author: TonyInBeijing
- * @Date: 2023-08-24 22:55:30
+ * @Date: 2023-08-25 19:04:46
  * @LastEditors: TonyInBeijing
- * @LastEditTime: 2023-08-24 23:07:55
- * @FilePath: /notebook/爪哇教育笔记/day04-promise&模块化/4.promise.md
- * @Description: 
+ * @LastEditTime: 2023-08-27 17:01:22
+ * @FilePath: /notebook/爪哇教育笔记/day04-promise&模块化/promise-source.js
+ * @Description: 手写一个 promise
  * 
--->
-# Promise
-
-## 基础部分
-
-> 主要解决异步回调地狱问题
-
-```javascript
-// Promise 用法
-const callback = () => {
-  console.log("callback");
-};
-const fn1 = () => new Promise(resolve => {
-    setTimeout(resolve,1000);
-});
-fn1().then(callback);
-// then() 第二个参数
-const errorCallback = () => {
-  console.log("errorCallback"); 
-  throw new Error("error!");
-};
-const errorCatch = err => {
-  console.log(err);
-};
-const fn2 = () => new Promise(resolve => {
-  setTimeout(resolve,1000);
-});
-fn2().then(errorCallback).catch(errorCatch); // 捕获到 errorCallback 里的 error
-fn2().then(errorCallback,errorCatch); // 不会捕获到 errorCallback 里的 error
-
-// 判断最终输出结果
-let promise1 = new Promise((resolve,reject) => reject());
-promise1
-  .then(null,() => 111)
-  .then(null,null)
-  .then(
-  val => console.log("promise onFulfilled::",val),
-  val =>console.log("promise onRejected::",val)
-) // promise onFulfilled:: 111
-```
-
-## 手写一个 promise
-
-```javascript
+ */
 class MiniPromise {
     constructor(excutor) {
         this.status = "pending";
@@ -187,7 +144,3 @@ class MiniPromise {
         });
     }
 }
-```
-
-
-
