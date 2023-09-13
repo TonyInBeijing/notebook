@@ -1,0 +1,54 @@
+<!--
+ * @Author: TonyInBeijing
+ * @Date: 2023-09-13 14:35:55
+ * @LastEditors: TonyInBeijing
+ * @LastEditTime: 2023-09-13 14:39:46
+ * @FilePath: /notebook/playground/html/flex.html
+ * @Description: 
+ * 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="a"></div>
+        <div id="b"></div>
+        <div id="c"></div>
+    </div>
+</body>
+<style>
+    #container {
+        display: flex;
+        width: 1000px;
+    }
+
+    #a {
+        width: 200px;
+        height: 20px;
+        background-color: red;
+        flex: auto;
+    }
+
+    #b {
+        width: 300px;
+        height: 20px;
+        background-color: green;
+        flex: 1 1 200px;
+    }
+
+    #c {
+        width: 400px;
+        height: 20px;
+        background-color: black;
+        flex: none;
+    }
+</style>
+
+</html>
