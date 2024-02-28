@@ -26,6 +26,13 @@ len = len(tokenizer(example["question"], example["context"])["input_ids"]) # 超
 
 #TODO: 关于截断的策略：
     # - 直接截断超出部分: truncation=only_second
+tokenized_example = tokenizer(
+    example["question"],
+    example["context"],
+    truncation="only_second",
+    max_length=max_length
+)["input_ids"]
+len(tokenized_example) # 384
     # - 仅截断上下文（context），保留问题（question）：return_overflowing_tokens=True & 设置stride
 tokenized_example = tokenizer(
     example["question"],
@@ -36,4 +43,17 @@ tokenized_example = tokenizer(
     stride=doc_stride
 )
 
-input_ids = [len(x) for x in tokenized_example["input_ids"]]
+input_ids = [len(x) for x in tokenized_example["input_ids"]] # [384,157]
+
+#TODO: 使用 offsets_mapping 获取最原始的 input_ids
+tokenized_example = tokenizer(
+    example["question"],
+    example["context"],
+    max_length=max_length,
+    truncation="only_second",
+    return_overflowing_tokens=True,
+    return_offsets_mapping=True,
+    stride=doc_stride
+)
+
+print(tokenized_example["offset_mapping"][0][:100])
