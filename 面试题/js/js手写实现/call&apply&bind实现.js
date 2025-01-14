@@ -1,5 +1,11 @@
-/**
- * call & apply 手写实现
+/*
+ * @Author: TonyInBeijing
+ * @Date: 2023-05-10 14:34:30
+ * @LastEditors: TonyInBeijing
+ * @LastEditTime: 2025-01-14 15:18:27
+ * @FilePath: /notebook/面试题/js/js手写实现/call&apply&bind实现.js
+ * @Description: 
+ * 
  */
 Function.prototype.myCall = function (context, ...args) {
     // 第一个参数为null或者undefined时，this指向全局对象window/global，值为原始值的指向该原始值的自动包装对象，如String、Number、Boolean
@@ -23,6 +29,15 @@ Function.prototype.myApply = function (context, args = []) {
     const res = args.length > 0 ? cxt[func](...args) : cxt[func]();
     return res
 }
+
+Function.prototype.myBind = function(context,...args){
+    context.fn = this;
+    return function(...args2){
+        const result = context.fn(...args,...args2);
+        delete context.fn;
+        return result;
+    };
+};
 
 
 // 测试
